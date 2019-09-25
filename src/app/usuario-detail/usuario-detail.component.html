@@ -1,0 +1,14 @@
+<div *ngIf="usuario">
+    <h2>{{usuario.nomeUsuario | uppercase}} Detalhes</h2>
+    <div><span>id:</span>{{usuario.idUsuario}}</div>
+
+    <div>
+        <label>Nome:
+            <input [(ngModel)]="usuario.nomeUsuario" placeholder="Nome do Usuario" />
+            <img [src]="usuario.foto" height="200" *ngIf="usuario.foto">
+        </label>
+        
+    </div>
+    <button (click)="save()">Salvar</button>
+    <button (click)="goBack()">Voltar</button>
+</div>

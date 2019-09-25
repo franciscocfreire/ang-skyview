@@ -1,0 +1,39 @@
+<h2>Meus Usuarios</h2>
+<div>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <label>
+            Id Usuario:
+            <input type="number" formControlName="idUsuario" required>
+        </label>
+        <label>
+            Nome:
+            <input type="text" formControlName="nomeUsuario" required>
+        </label>
+
+        <label>
+            Endereço:
+            <input type="text" formControlName="enderecoUsuario">
+        </label>
+
+        <label>
+           Telefone:
+            <input type="number" formControlName="telefoneUsuario">
+        </label>
+
+        <label>
+            Foto:
+            <input type="file" formControlName="foto" (change)="fileProgress($event)">
+        </label>
+
+        <button type="submit" [disabled]="!profileForm.valid">Adicionar</button>
+    </form>    
+
+</div>
+<ul class="usuarios">
+    <li *ngFor="let usuario of usuarios">
+        <a routerLink="/detail/{{usuario.idUsuario}}">
+            <span class="badge">{{usuario.idUsuario}}</span> {{usuario.nomeUsuario}}
+        </a>
+        <button class="delete" title="Apagar Usuario" (click)="delete(usuario)">x</button>
+    </li>
+</ul>
